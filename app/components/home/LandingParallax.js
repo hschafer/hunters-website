@@ -16,7 +16,7 @@ export default class LandingParallax extends React.Component {
             <br />
           </div>
         </div>
-        <div className="parallax"><img src="http://themetrust.com/demos/port/wp-content/uploads/dock.jpg" alt="Unsplashed background img 1" style={{display: 'block', transform: 'translate3d(-50%, 405px, 0px)'}} /></div>
+        <div className="parallax"><img src="images/dock.jpg" alt="Unsplashed background img 1" style={{display: 'block', transform: 'translate3d(-50%, 405px, 0px)'}} /></div>
       </div>
     );
   }
