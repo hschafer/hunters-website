@@ -1,12 +1,13 @@
-require('../../public/css/campusmaps.css');
+require('../../../public/css/campusmaps.css');
 
 import axios from 'axios'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {deepOrange500} from 'material-ui/styles/colors';
-import CampusMapsMenu from './CampusMapsMenu';
-import CampusMapsDisplay from './CampusMapsDisplay';
-import Header from './Header';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import Menu from './Menu';
+import MapDisplay from './MapDisplay';
+import Header from '../shared/Header';
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -19,7 +20,7 @@ const GET_BUILDINGS_URL = SERVER + "getBuildings";
 const FIND_PATH_URL = SERVER + "findPath";
 
 
-export default class CampusMaps extends React.Component {
+export default class AppContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,7 +45,7 @@ export default class CampusMaps extends React.Component {
         <div>
           <Header key="header" title="Campus Maps - Web" />
           <div key="wrapper" className="row">
-            <CampusMapsDisplay  
+            <MapDisplay  
                 key="display"
                 colClass="s12 m9"
                 buildings={this.state.buildings}
@@ -52,7 +53,7 @@ export default class CampusMaps extends React.Component {
                 end={this.state.end}
                 path={this.state.path}
             />
-            <CampusMapsMenu 
+            <Menu 
                 key="menu"
                 colClass="s12 m3" 
                 buildings={this.state.buildings}

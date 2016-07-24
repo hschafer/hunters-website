@@ -1,18 +1,16 @@
-require('../../public/css/main.css')
-/**
- * In this file, we create a React component
- * which incorporates components provided by Material-UI.
- */
-import RaisedButton from 'material-ui/RaisedButton';
+require('../../../public/css/main.css')
+
 import Dialog from 'material-ui/Dialog';
-import {deepOrange500} from 'material-ui/styles/colors';
 import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import {deepOrange500} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import ImplementationDrawer from './ImplementationDrawer';
-import Header from './Header';
+
 import LandingParallax from './LandingParallax';
 import ProjectCard from './ProjectCard';
+import Header from '../shared/Header';
+import ImplementationDrawer from '../shared/ImplementationDrawer';
 
 const styles = {
   container: {

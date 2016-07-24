@@ -1,6 +1,7 @@
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
-import HomePage from './components/HomePage.js';
-import CampusMapsContainer from './components/CampusMapsContainer.js';
+
+import CampusMapsContainer from './components/campus_maps/AppContainer.js';
+import HomePage from './components/home/HomePage.js';
 
 export default (
   <Router history={browserHistory}>

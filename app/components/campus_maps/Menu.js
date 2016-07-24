@@ -1,22 +1,22 @@
 import axios from "axios"
 import RaisedButton from "material-ui/RaisedButton";
 import { teal400 } from "material-ui/styles/colors";
-import CampusMapsDropDown from "./CampusMapsDropDown";
+import DropDown from "./DropDown";
 
 
-export default class CampusMapMenu extends React.Component {
+export default class Menu extends React.Component {
   render() {
     var columnClassName = "col " + this.props.colClass;
     return (
       <form id="menu" className={columnClassName}> 
-        <CampusMapsDropDown 
+        <DropDown 
             key="start"
             name="Start" 
             buildings={this.props.buildings} 
             buildingSelect={this.props.buildingSelect.bind(undefined, "start")}
             value={this.props.start}
         />
-        <CampusMapsDropDown 
+        <DropDown 
             key="end"
             name="End" 
             buildings={this.props.buildings} 

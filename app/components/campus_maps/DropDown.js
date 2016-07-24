@@ -1,7 +1,7 @@
-import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import SelectField from 'material-ui/SelectField';
 
-export default class CampusMapsDropDown extends React.Component {
+export default class DropDown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: this.props.value};
