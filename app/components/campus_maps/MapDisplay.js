@@ -1,8 +1,17 @@
+/*
+<MapsMyLocation
+              {...this.getProps("start", MARKER_WIDTH / 2, MARKER_WIDTH / 2, teal400)}
+          />
+          <MapsPlace
+              {...this.getProps("end", MARKER_WIDTH / 2, MARKER_WIDTH - PIN_OFFSET, red500)}
+          />
+ */
 import { teal400, red500} from 'material-ui/styles/colors';
 import MapsMyLocation from 'material-ui/svg-icons/maps/my-location';
 import MapsPlace from 'material-ui/svg-icons/maps/place';
 
 import Line from './Line';
+import Marker from './Marker';
 
 const MAX_WIDTH = 4330;
 const MAX_HEIGHT = 2964;
@@ -15,7 +24,7 @@ export default class MapDisplay extends React.Component {
     return (
       <div id="mapDisplay" className={columnClassName}>
         <div id="displayWrapper">
-          <img 
+          <img
               id="campusImage"
               className="z-depth-2"
               key="image"
@@ -23,11 +32,23 @@ export default class MapDisplay extends React.Component {
               alt="campus map"
           />
           {this.drawPath()}
-          <MapsMyLocation 
-              {...this.getProps("start", MARKER_WIDTH / 2, MARKER_WIDTH / 2, teal400)} 
+          <Marker
+              key="start"
+              id="start"
+              svgIcon={MapsMyLocation}
+              color={teal400}
+              targetX = {MARKER_WIDTH / 2}
+              targetY = {MARKER_WIDTH / 2}
+              {...this.computeLocation("start")}
           />
-          <MapsPlace 
-              {...this.getProps("end", MARKER_WIDTH / 2, MARKER_WIDTH - PIN_OFFSET, red500)} 
+          <Marker
+              key="end"
+              id="end"
+              svgIcon={MapsPlace}
+              color={red500}
+              targetX = {MARKER_WIDTH / 2}
+              targetY = {MARKER_WIDTH - PIN_OFFSET}
+              {...this.computeLocation("end")}
           />
         </div>
       </div>
@@ -39,10 +60,10 @@ export default class MapDisplay extends React.Component {
     if (this.props.path) {
       var image = document.getElementById("campusImage");
       this.props.path.forEach(function(step, index) {
-          var x1 = this.scale(step.start.x, MAX_WIDTH, image.width, 0);
-          var x2 = this.scale(step.end.x, MAX_WIDTH, image.width, 0);
-          var y1 = this.scale(step.start.y, MAX_HEIGHT, image.height, 0);
-          var y2 = this.scale(step.end.y, MAX_HEIGHT, image.height, 0);
+          var x1 = this.scale(step.start.x, MAX_WIDTH, image.width);
+          var x2 = this.scale(step.end.x, MAX_WIDTH, image.width);
+          var y1 = this.scale(step.start.y, MAX_HEIGHT, image.height);
+          var y2 = this.scale(step.end.y, MAX_HEIGHT, image.height);
           pathComponents.push(
             <Line
                 className="path-line"
@@ -56,26 +77,20 @@ export default class MapDisplay extends React.Component {
     }
     return pathComponents;
   }
-  
-  scale(oldPosition, oldMax, newMax, offset) {
-    return oldPosition / oldMax * newMax - offset;
-  }
 
-  getProps(marker, xOffset, yOffset, color) {
+  computeLocation(marker) {
+    var result = {};
     var index = this.props[marker];
-    var props = {key: marker, id: marker};
-    var style ={};
     if (index) {
       var location = this.props.buildings[index].location;
       var image = document.getElementById("campusImage");
-      style.left = this.scale(location.x, MAX_WIDTH, image.width, xOffset) + "px";
-      style.top = this.scale(location.y, MAX_HEIGHT, image.height, yOffset) + "px";
-      style.display = "block";
-      style.color = color;
-    } else {
-      style.display = "none" 
+      result.x = this.scale(location.x, MAX_WIDTH, image.width);
+      result.y = this.scale(location.y, MAX_HEIGHT, image.height);
     }
-    props["style"] = style;
-    return props;
+    return result;
+  }
+
+  scale(oldPosition, oldMax, newMax) {
+    return oldPosition / oldMax * newMax;
   }
 }
