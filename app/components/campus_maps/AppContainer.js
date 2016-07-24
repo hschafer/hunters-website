@@ -15,7 +15,7 @@ const muiTheme = getMuiTheme({
   },
 });
 
-const SERVER = "http://localhost:8080/campusmaps/";
+const SERVER = "http://hschafer:8080/campusmaps/";
 const GET_BUILDINGS_URL = SERVER + "getBuildings";
 const FIND_PATH_URL = SERVER + "findPath";
 
