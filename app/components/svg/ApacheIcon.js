@@ -2,7 +2,6 @@
  * SVG coordinates taken from http://devicon.fr/
  */
 
-import React from 'react';
 import SvgIcon from 'material-ui/SvgIcon';
 
 export default class ApacheIcon extends React.Component {
