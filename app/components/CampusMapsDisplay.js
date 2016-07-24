@@ -6,6 +6,7 @@ import { teal400, red500} from 'material-ui/styles/colors';
 const MAX_WIDTH = 4330;
 const MAX_HEIGHT = 2964;
 const MARKER_WIDTH = 24;  // Hard coded material-ui, of course
+const PIN_OFFSET = 2.5;   // How far the bottom of the pin is from the point
 
 export default class CampusMapsDisplay extends React.Component {
   render() {
@@ -16,7 +17,7 @@ export default class CampusMapsDisplay extends React.Component {
           <img key="image" src="/images/campusmaps.jpg" alt="campus map" id="campusImage" className="z-depth-2"/>
           {this.drawPath()}
           <MapsMyLocation {...this.getProps("start", MARKER_WIDTH / 2, MARKER_WIDTH / 2, teal400)} />
-          <MapsPlace {...this.getProps("end", MARKER_WIDTH / 2, MARKER_WIDTH, red500)} />
+          <MapsPlace {...this.getProps("end", MARKER_WIDTH / 2, MARKER_WIDTH - PIN_OFFSET, red500)} />
         </div>
       </div>
     );
