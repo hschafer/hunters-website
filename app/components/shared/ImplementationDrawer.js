@@ -1,5 +1,6 @@
 import Divider from 'material-ui/Divider';
 import Drawer from 'material-ui/Drawer';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 import {List, ListItem} from 'material-ui/List';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -7,6 +8,7 @@ import Subheader from 'material-ui/Subheader';
 
 import ActionDns from 'material-ui/svg-icons/action/dns';
 import ActionGrade from 'material-ui/svg-icons/action/grade';
+import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline';
 import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import ContentSend from 'material-ui/svg-icons/content/send';
@@ -39,21 +41,34 @@ export default class ImplementationDrawer extends React.Component {
   render() {
     return (
       <div>
-        <RaisedButton
-          label="Toggle Drawer"
-          onTouchTap={this.handleToggle}
-        />
-        <Drawer 
-          open={this.state.open} 
-          docked={false} 
+        <div
+            className="fixed-action-btn"
+            style={{bottom: "45px", right: "24px"}}
+            onClick={this.handleToggle}
+        >
+          <a className="btn-floating btn-large teal lighten-1">
+            <i className="material-icons">info_outline</i>
+          </a>
+        </div>
+        <Drawer
+          containerClassName="side-nav"
+          open={this.state.open}
+          docked={false}
           openSecondary={true}
+			 width={300}
           onRequestChange={(open) => this.setState({open})}
         >
-          <Subheader>Technologies Used</Subheader>
+			 <div className="userView">
+            <img className="background" src="images/background1.jpg" />
+            <a><img className="circle" src="images/hunter.jpg" /></a>
+            <a><span className="white-text name">Hunter Schafer</span></a>
+            <a href="mailto:hschafer@uw.edu"><span className="white-text email">hschafer@uw.edu</span></a>
+          </div>
+          <Subheader>This Page is Built With</Subheader>
           <List>
-            <ListItem 
-              primaryText="Front-End" 
-              leftIcon={<NotificationPersonalVideo />} 
+            <ListItem
+              primaryText="Front-End"
+              leftIcon={<NotificationPersonalVideo />}
               initiallyOpen={true}
               primaryTogglesNestedList={true}
               nestedItems={[
@@ -97,7 +112,7 @@ export default class ImplementationDrawer extends React.Component {
                 />,
               ]}
             />
-          </List> 
+          </List>
         </Drawer>
       </div>
     );
