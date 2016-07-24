@@ -14,7 +14,7 @@ const muiTheme = getMuiTheme({
   },
 });
 
-const SERVER = "http://hschafer.com:8080/campusmaps/";
+const SERVER = "http://localhost:8080/campusmaps/";
 const GET_BUILDINGS_URL = SERVER + "getBuildings";
 const FIND_PATH_URL = SERVER + "findPath";
 
@@ -81,7 +81,6 @@ export default class CampusMaps extends React.Component {
           end: this.state.buildings[this.state.end].shortName 
         }
       }).then(function(response) {
-        console.log(response)
         this.setState({path: response.data.result});
       }.bind(this)).catch(function(error) {
         console.log('error', error);

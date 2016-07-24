@@ -27,7 +27,6 @@ export default class CampusMapsDisplay extends React.Component {
     var pathComponents = [];
     if (this.props.path) {
       var image = document.getElementById("campusImage");
-      console.log("campusImage", image);
       this.props.path.forEach(function(step, index) {
           var x1 = this.scale(step.start.x, MAX_WIDTH, image.width, 0);
           var x2 = this.scale(step.end.x, MAX_WIDTH, image.width, 0);

@@ -25,10 +25,11 @@ export default class CampusMapMenu extends React.Component {
         />
         <RaisedButton 
             key="button"
-            label="Find Path!"
             backgroundColor={teal400}
-            labelColor="#FFFFFF"
             fullWidth={true} 
+            label="Find Path!"
+            labelStyle={{color: "#FFFFFF"}}
+            disabled={!(this.props.start && this.props.end)}
             onClick={this.props.findPath}
         />
       </form>
