@@ -33,7 +33,6 @@ export default class MapDisplay extends React.Component {
           />
           {this.drawPath()}
           <Marker
-              key="start"
               id="start"
               svgIcon={MapsMyLocation}
               color={teal400}
@@ -42,7 +41,6 @@ export default class MapDisplay extends React.Component {
               {...this.computeLocation("start")}
           />
           <Marker
-              key="end"
               id="end"
               svgIcon={MapsPlace}
               color={red500}

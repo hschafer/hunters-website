@@ -3,8 +3,8 @@ export default class Marker extends React.Component {
     console.log(this.props);
     return (
       <this.props.svgIcon
-          key={this.props.key}
           id={this.props.id}
+          key={this.props.id}
           style={this.getStyle()}
       />
     );
