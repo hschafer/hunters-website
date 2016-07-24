@@ -5,7 +5,7 @@ export default class LandingParallax extends React.Component {
         <div className="section no-pad-bot">
           <div className="container">
             <br /><br />
-            <h1 className="header center teal-text text-lighten-2">Hey there!</h1>
+            <h1 className="header center white-text text-lighten-2">Hey there!</h1>
             <div className="row center">
               <h5 className="header col s12 light">I am a graduate student studying Computer Science at the University of Washington</h5>
             </div>
@@ -16,8 +16,8 @@ export default class LandingParallax extends React.Component {
             <br />
           </div>
         </div>
-        <div className="parallax"><img src="images/background1.jpg" alt="Unsplashed background img 1" style={{display: 'block', transform: 'translate3d(-50%, 177px, 0px)'}} /></div>
-      </div> 
+        <div className="parallax"><img src="http://themetrust.com/demos/port/wp-content/uploads/dock.jpg" alt="Unsplashed background img 1" style={{display: 'block', transform: 'translate3d(-50%, 405px, 0px)'}} /></div>
+      </div>
     );
   }
 }

@@ -7,10 +7,22 @@ import {deepOrange500} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import ActionDns from 'material-ui/svg-icons/action/dns';
+import NotificationPersonalVideo from 'material-ui/svg-icons/notification/personal-video';
+
 import LandingParallax from './LandingParallax';
 import ProjectCard from './ProjectCard';
 import Header from '../shared/Header';
 import ImplementationDrawer from '../shared/ImplementationDrawer';
+
+import LessIcon from '../svg/LessIcon';
+import MaterialUiIcon from '../svg/MaterialUiIcon';
+import MaterializeCssIcon from '../svg/MaterializeCssIcon';
+import NGINXIcon from '../svg/NGINXIcon';
+import NodeIcon from '../svg/NodeIcon';
+import ReactIcon from '../svg/ReactIcon';
+import WebpackIcon from '../svg/WebpackIcon';
+
 
 const styles = {
   container: {
@@ -24,6 +36,46 @@ const muiTheme = getMuiTheme({
     accent1Color: deepOrange500,
   },
 });
+
+const IMPLEMENTED_WITH = [
+  {
+    name: "Front-End",
+    icon: NotificationPersonalVideo,
+    items: [
+      {
+        name: "React",
+        icon: ReactIcon,
+        href: "https://facebook.github.io/react/"
+      },
+      {
+        name: "Materialize CSS",
+        icon: MaterializeCssIcon,
+        href: "http://materializecss.com/"
+      }
+    ]
+  },
+  {
+    name: "Back-End",
+    icon: ActionDns,
+    items: [
+      {
+        name: "Node.js",
+        icon: NodeIcon,
+        href: "https://nodejs.org/en/"
+      },
+      {
+        name: "NGINX",
+        icon: NGINXIcon,
+        href: "https://www.nginx.com/"
+      },
+      {
+        name: "Webpack",
+        icon: WebpackIcon,
+        href: "https://webpack.github.io"
+      }
+    ]
+  }
+]
 
 class HomePage extends React.Component {
   constructor(props, context) {
@@ -93,7 +145,7 @@ class HomePage extends React.Component {
             <li className="collection-item"><div>scroll<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
           </ul>
           <h4>Some about me!</h4>
-          <ImplementationDrawer />
+          <ImplementationDrawer components={IMPLEMENTED_WITH} />
         </div>
       </MuiThemeProvider>
     );

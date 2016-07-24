@@ -6,20 +6,7 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
 
-import ActionDns from 'material-ui/svg-icons/action/dns';
-import ActionGrade from 'material-ui/svg-icons/action/grade';
-import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline';
-import ContentDrafts from 'material-ui/svg-icons/content/drafts';
-import ContentInbox from 'material-ui/svg-icons/content/inbox';
-import ContentSend from 'material-ui/svg-icons/content/send';
-import NotificationPersonalVideo from 'material-ui/svg-icons/notification/personal-video';
-
-import ApacheIcon from '../svg/ApacheIcon'
-import LessIcon from '../svg/LessIcon'
-import MaterialUiIcon from '../svg/MaterialUiIcon'
-import MaterializeCssIcon from '../svg/MaterializeCssIcon'
-import ReactIcon from '../svg/ReactIcon'
-import WebpackIcon from '../svg/WebpackIcon'
+import ContactCard from "./ContactCard";
 
 export default class ImplementationDrawer extends React.Component {
 
@@ -58,63 +45,29 @@ export default class ImplementationDrawer extends React.Component {
 			 width={300}
           onRequestChange={(open) => this.setState({open})}
         >
-			 <div className="userView">
-            <img className="background" src="images/background1.jpg" />
-            <a><img className="circle" src="images/hunter.jpg" /></a>
-            <a><span className="white-text name">Hunter Schafer</span></a>
-            <a href="mailto:hschafer@uw.edu"><span className="white-text email">hschafer@uw.edu</span></a>
-          </div>
+			 <ContactCard />
           <Subheader>This Page is Built With</Subheader>
           <List>
-            <ListItem
-              primaryText="Front-End"
-              leftIcon={<NotificationPersonalVideo />}
-              initiallyOpen={true}
-              primaryTogglesNestedList={true}
-              nestedItems={[
-                <ListItem
-                  key={1}
-                  primaryText="React"
-                  leftIcon={<ReactIcon />}
-                  href="https://facebook.github.io/react/"
-                />,
-                <ListItem
-                  key={2}
-                  primaryText="Materialize CSS"
-                  leftIcon={<MaterializeCssIcon />}
-                  href="http://materializecss.com/"
-                />,
-                <ListItem
-                  key={3}
-                  primaryText="Material-UI"
-                  leftIcon={<MaterialUiIcon />}
-                  href="http://www.material-ui.com/"
-                />
-              ]}
-            />
-            <ListItem
-              primaryText="Back-End"
-              leftIcon={<ActionDns />}
-              initiallyOpen={true}
-              primaryTogglesNestedList={true}
-              nestedItems={[
-                <ListItem
-                  key={1}
-                  primaryText="Apache HTTP Server"
-                  leftIcon={<ApacheIcon />}
-                  href="https://httpd.apache.org/"
-                />,
-                <ListItem
-                  key={2}
-                  primaryText="Webpack"
-                  leftIcon={<WebpackIcon />}
-                  href="https://webpack.github.io/"
-                />,
-              ]}
-            />
+				{this.getListItems(this.props.components)}
           </List>
         </Drawer>
       </div>
     );
+  }
+
+  getListItems(sections) {
+	 var listItems = [];
+	 sections.forEach(function(elem, index) {
+		var props = {primaryText: elem.name, leftIcon: <elem.icon />};
+		if (elem.items) {
+		  props.initiallyOpen = true;
+		  props.primaryTogglesNestedList = true;
+		  props.nestedItems = this.getListItems(elem.items);
+		} else if (elem.href) {
+		  props.href = elem.href;
+		}
+		listItems.push(<ListItem key={index} {...props} />);
+	 }.bind(this));
+	 return listItems;
   }
 }
