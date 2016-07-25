@@ -55,6 +55,28 @@ footer.page-footer {
   margin: 0;
 }
 
+.section.card-panel {
+  padding: 0px;
+  overflow: hidden;
+}
+
+.section.card-panel h4 {
+  margin: 0px;
+  padding: 20px;
+}
+
+.section.card-panel .row {
+  margin: 20px;
+}
+
+.bio .headshot {
+  width: 100%;
+}
+
+.bio .promo-caption {
+  margin: 0px;
+}  
+
 .card-image {
   height: 260px;
 }

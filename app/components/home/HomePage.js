@@ -116,7 +116,21 @@ class HomePage extends React.Component {
           <Header title="Hunter Schafer"/>
           <LandingParallax />
           <div className="container">
-            <div className="section">
+            <div className="section card-panel">
+              <h4 className="grey white-text">Bio</h4>
+              <div className="bio row valign-wrapper">
+                <div className="col s4">
+                  <img className="headshot circle z-depth-1" src="images/hunter.jpg" />
+                </div>
+                <div className="col s8">
+                  <h2>Hunter Schafer</h2>
+                  <p className="promo-caption">University of Washington</p>
+                  <p className="promo-caption">Combined Bachelors / Masters of Computer Science</p>
+                </div>
+              </div>
+            </div>
+            <div className="section card-panel">
+              <h4 className="grey white-text">Projects</h4>
               <div className="row">
                 <ProjectCard
                   projectName="Campus Paths - Web"
@@ -135,23 +149,6 @@ class HomePage extends React.Component {
               </div>
             </div>
           </div>
-          <ul className="collection with-header">
-            <li className="collection-header"><h4>Projects</h4></li>
-            <li className="collection-item"><div>Here<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-            <li className="collection-item"><div>is<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-            <li className="collection-item"><div>a<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-            <li className="collection-item"><div>list<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-            <li className="collection-item"><div>of<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-            <li className="collection-item"><div>projects<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-            <li className="collection-item"><div>so<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-            <li className="collection-item"><div>that<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-            <li className="collection-item"><div>I<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-            <li className="collection-item"><div>am<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-            <li className="collection-item"><div>able<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-            <li className="collection-item"><div>to<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-            <li className="collection-item"><div>scroll<a href="#!" className="secondary-content"><i className="material-icons">send</i></a></div></li>
-          </ul>
-          <h4>Some about me!</h4>
           <ImplementationDrawer components={IMPLEMENTED_WITH} />
         </div>
       </MuiThemeProvider>
