@@ -125,6 +125,13 @@ class HomePage extends React.Component {
                   projectLink="campusmaps"
                   codeLink="https://www.github.com"
                 />
+                <ProjectCard
+                  projectName="Personal Website"
+                  projectImage="images/website.png"
+                  projectDescription="Hold onto your hat, it's about to get meta! I wanted to put a link here since I've spent some time on this and I wanted to share the code. If you find a bug, please file an issue on GitHub!"
+                  projectLink="/"
+                  codeLink="https://github.com/hschafer/hunters-website"
+                />
               </div>
             </div>
           </div>
