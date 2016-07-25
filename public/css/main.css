@@ -73,6 +73,10 @@ footer.page-footer {
   width: 100%;
 }
 
+.bio p {
+  line-height: 1.5;
+}
+
 .bio .promo-caption {
   margin: 0px;
 }  
