@@ -1,7 +1,14 @@
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import Router from './router';
+import AppRouter from './router';
 
 injectTapEventPlugin();
-ReactDOM.render(Router, document.getElementById('root'));
+
+var app =
+  <MuiThemeProvider>
+    <AppRouter />
+  </MuiThemeProvider>
+
+ReactDOM.render(app, document.getElementById('root'));

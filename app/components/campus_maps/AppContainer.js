@@ -1,9 +1,6 @@
 require('../../../public/css/campusmaps.css');
 
 import axios from 'axios'
-import {deepOrange500} from 'material-ui/styles/colors';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import ActionDns from 'material-ui/svg-icons/action/dns';
 import NotificationPersonalVideo from 'material-ui/svg-icons/notification/personal-video';
@@ -22,12 +19,6 @@ import NodeIcon from '../svg/NodeIcon';
 import ReactIcon from '../svg/ReactIcon';
 import WebpackIcon from '../svg/WebpackIcon';
 
-
-const muiTheme = getMuiTheme({
-  palette: {
-    accent1Color: deepOrange500,
-  },
-});
 
 const SERVER = "http://hschafer.com:8080/campusmaps/";
 const GET_BUILDINGS_URL = SERVER + "getBuildings";
@@ -99,31 +90,29 @@ export default class AppContainer extends React.Component {
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <div>
-          <Header key="header" title="Campus Maps - Web" />
-          <div key="wrapper" className="row">
-            <MapDisplay
-                key="display"
-                colClass="s12 m9"
-                buildings={this.state.buildings}
-                start={this.state.start}
-                end={this.state.end}
-                path={this.state.path}
-            />
-            <Menu
-                key="menu"
-                colClass="s12 m3"
-                buildings={this.state.buildings}
-                buildingSelect={this.buildingSelect.bind(this)}
-                findPath={this.findPath.bind(this)}
-                start={this.state.start}
-                end={this.state.end}
-            />
-          </div>
-          <ImplementationDrawer components={IMPLEMENTED_WITH} />
+      <div>
+        <Header key="header" title="Campus Maps - Web" />
+        <div key="wrapper" className="row">
+          <MapDisplay
+              key="display"
+              colClass="s12 m9"
+              buildings={this.state.buildings}
+              start={this.state.start}
+              end={this.state.end}
+              path={this.state.path}
+          />
+          <Menu
+              key="menu"
+              colClass="s12 m3"
+              buildings={this.state.buildings}
+              buildingSelect={this.buildingSelect.bind(this)}
+              findPath={this.findPath.bind(this)}
+              start={this.state.start}
+              end={this.state.end}
+          />
         </div>
-      </MuiThemeProvider>
+        <ImplementationDrawer components={IMPLEMENTED_WITH} />
+      </div>
     );
   }
 
