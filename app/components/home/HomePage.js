@@ -138,7 +138,7 @@ class HomePage extends React.Component {
                   projectImage="/images/campusmaps_small.jpg"
                   projectDescription="In our Software Design & Implementation class, we developed a Java GUI application that could find paths between buildings on campus in order to learn about GUI creation and practice the MVC pattern. I took the project an extra step by making it a web app."
                   projectLink="campusmaps"
-                  codeLink="https://www.github.com"
+                  codeLink="request_permission"
                 />
                 <ProjectCard
                   projectName="Personal Website"
