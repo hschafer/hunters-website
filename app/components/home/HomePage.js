@@ -7,13 +7,13 @@ import RaisedButton from 'material-ui/RaisedButton';
 import ActionDns from 'material-ui/svg-icons/action/dns';
 import NotificationPersonalVideo from 'material-ui/svg-icons/notification/personal-video';
 
-import LandingParallax from './LandingParallax';
 import ProjectCard from './ProjectCard';
+import Section from './Section';
+
 import Header from '../shared/Header';
 import ImplementationDrawer from '../shared/ImplementationDrawer';
+import LandingParallax from '../shared/LandingParallax';
 
-import LessIcon from '../svg/LessIcon';
-import MaterialUiIcon from '../svg/MaterialUiIcon';
 import MaterializeCssIcon from '../svg/MaterializeCssIcon';
 import NGINXIcon from '../svg/NGINXIcon';
 import NodeIcon from '../svg/NodeIcon';
@@ -97,10 +97,9 @@ class HomePage extends React.Component {
     return (
       <div>
         <Header title="Hunter Schafer"/>
-        <LandingParallax />
+        <LandingParallax text="Hello" imageUrl="images/dock.jpg" />
         <div className="container">
-          <div className="section card-panel">
-            <h4 className="grey white-text">Bio</h4>
+          <Section title="Bio">
             <div className="bio row valign-wrapper">
               <div className="col s4">
                 <img className="headshot circle z-depth-1" src="images/hunter.jpg" />
@@ -112,9 +111,8 @@ class HomePage extends React.Component {
                 <p className="grey-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
               </div>
             </div>
-          </div>
-          <div className="section card-panel">
-            <h4 className="grey white-text">Projects</h4>
+          </Section>
+          <Section title="Projects">
             <div className="row">
               <ProjectCard
                 projectName="Campus Paths - Web"
@@ -131,7 +129,7 @@ class HomePage extends React.Component {
                 codeLink="https://github.com/hschafer/hunters-website"
               />
             </div>
-          </div>
+          </Section>
         </div>
         <ImplementationDrawer components={IMPLEMENTED_WITH} />
       </div>
