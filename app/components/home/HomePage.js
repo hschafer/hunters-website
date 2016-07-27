@@ -3,17 +3,15 @@ require('../../../public/css/main.css')
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-
 import ActionDns from 'material-ui/svg-icons/action/dns';
 import NotificationPersonalVideo from 'material-ui/svg-icons/notification/personal-video';
+import { Link } from 'react-router';
 
 import ProjectCard from './ProjectCard';
 import Section from './Section';
-
 import Header from '../shared/Header';
 import ImplementationDrawer from '../shared/ImplementationDrawer';
 import LandingParallax from '../shared/LandingParallax';
-
 import MaterializeCssIcon from '../svg/MaterializeCssIcon';
 import NGINXIcon from '../svg/NGINXIcon';
 import NodeIcon from '../svg/NodeIcon';
@@ -97,7 +95,11 @@ class HomePage extends React.Component {
     return (
       <div>
         <Header title="Hunter Schafer"/>
-        <LandingParallax text="Hello" imageUrl="images/dock.jpg" />
+        <LandingParallax
+          text="Hello"
+          imageUrl="images/dock.jpg"
+          imageOffset="405px"
+        />
         <div className="container">
           <Section title="Bio">
             <div className="bio row valign-wrapper">
@@ -129,6 +131,13 @@ class HomePage extends React.Component {
                 codeLink="https://github.com/hschafer/hunters-website"
               />
             </div>
+          </Section>
+          <Section title="Blog">
+            <ul className="row">
+              <li>
+                <Link to="blog/sql_tutorial">SQL Tutorial</Link>
+              </li>
+            </ul>
           </Section>
         </div>
         <ImplementationDrawer components={IMPLEMENTED_WITH} />
