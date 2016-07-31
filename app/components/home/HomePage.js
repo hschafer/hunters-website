@@ -1,8 +1,6 @@
 require('../../../public/css/main.css')
 
-import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import ActionDns from 'material-ui/svg-icons/action/dns';
 import NotificationPersonalVideo from 'material-ui/svg-icons/notification/personal-video';
 import { Link } from 'react-router';
@@ -57,41 +55,10 @@ const IMPLEMENTED_WITH = [
       }
     ]
   }
-]
+];
 
-class HomePage extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleRequestClose = this.handleRequestClose.bind(this);
-    this.handleTouchTap = this.handleTouchTap.bind(this);
-
-    this.state = {
-      open: false,
-    };
-  }
-
-  handleRequestClose() {
-    this.setState({
-      open: false,
-    });
-  }
-
-  handleTouchTap() {
-    this.setState({
-      open: true,
-    });
-  }
-
+export default class HomePage extends React.Component {
   render() {
-    const standardActions = (
-      <FlatButton
-        label="Ok"
-        primary={true}
-        onTouchTap={this.handleRequestClose}
-      />
-    );
-
     return (
       <div>
         <Header title="Hunter Schafer"/>
@@ -145,5 +112,3 @@ class HomePage extends React.Component {
     );
   }
 }
-
-export default HomePage;

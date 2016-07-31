@@ -1,4 +1,3 @@
-import axios from "axios"
 import RaisedButton from "material-ui/RaisedButton";
 import { teal400 } from "material-ui/styles/colors";
 import DropDown from "./DropDown";

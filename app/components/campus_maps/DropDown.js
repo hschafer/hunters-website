@@ -33,7 +33,7 @@ export default class DropDown extends React.Component {
   makeBuildingItems() {
     var items = [];
     for (var i in this.props.buildings) {
-      var building = this.props.buildings[i]
+      var building = this.props.buildings[i];
       items.push(
           <MenuItem 
               value={i} 

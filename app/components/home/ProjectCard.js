@@ -1,5 +1,3 @@
-import FontIcon from 'material-ui/FontIcon';
-import ContentClear from 'material-ui/svg-icons/content/clear';
 import { Link } from 'react-router';
 
 export default class ProjectCard extends React.Component {

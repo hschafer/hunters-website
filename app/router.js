@@ -4,7 +4,7 @@ import CampusMapsContainer from './components/campus_maps/AppContainer';
 import HomePage from './components/home/HomePage';
 import NotFound from './components/other_views/NotFound';
 import RequestPermission from './components/other_views/RequestPermission';
-import SqlTutorial from './components/blog/SqlTutorial';
+import Article from './components/blog/sql_tutorial/Article';
 
 export default class AppRouter extends React.Component {
   render() {
@@ -13,7 +13,7 @@ export default class AppRouter extends React.Component {
         <Route path="/" component={HomePage} />
         <Route path="campusmaps" component={CampusMapsContainer} />
         <Route path="blog">
-          <Route path="sql_tutorial" component={SqlTutorial} />
+          <Route path="sql_tutorial" component={Article} />
         </Route>
 
         <Route path="request_permission" component={RequestPermission} />

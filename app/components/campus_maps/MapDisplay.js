@@ -1,11 +1,3 @@
-/*
-<MapsMyLocation
-              {...this.getProps("start", MARKER_WIDTH / 2, MARKER_WIDTH / 2, teal400)}
-          />
-          <MapsPlace
-              {...this.getProps("end", MARKER_WIDTH / 2, MARKER_WIDTH - PIN_OFFSET, red500)}
-          />
- */
 import { teal400, red500} from 'material-ui/styles/colors';
 import MapsMyLocation from 'material-ui/svg-icons/maps/my-location';
 import MapsPlace from 'material-ui/svg-icons/maps/place';

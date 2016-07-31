@@ -1,9 +1,5 @@
-import Divider from 'material-ui/Divider';
 import Drawer from 'material-ui/Drawer';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
 import {List, ListItem} from 'material-ui/List';
-import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
 
 import ContactCard from "./ContactCard";
@@ -42,13 +38,13 @@ export default class ImplementationDrawer extends React.Component {
           open={this.state.open}
           docked={false}
           openSecondary={true}
-			 width={300}
+          width={300}
           onRequestChange={(open) => this.setState({open})}
         >
-			 <ContactCard />
+          <ContactCard />
           <Subheader>This Page is Built With</Subheader>
           <List>
-				{this.getListItems(this.props.components)}
+            {this.getListItems(this.props.components)}
           </List>
         </Drawer>
       </div>

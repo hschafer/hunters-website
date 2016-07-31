@@ -1,4 +1,3 @@
-
 export default class Section extends React.Component {
   render() {
     return (

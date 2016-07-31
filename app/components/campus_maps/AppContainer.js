@@ -11,8 +11,6 @@ import Header from '../shared/Header';
 import ImplementationDrawer from '../shared/ImplementationDrawer';
 
 import JavaIcon from '../svg/JavaIcon';
-import LessIcon from '../svg/LessIcon';
-import MaterialUiIcon from '../svg/MaterialUiIcon';
 import MaterializeCssIcon from '../svg/MaterializeCssIcon';
 import NGINXIcon from '../svg/NGINXIcon';
 import NodeIcon from '../svg/NodeIcon';
