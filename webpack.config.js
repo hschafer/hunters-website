@@ -31,6 +31,11 @@ module.exports = {
         ]
     },
     plugins: [
+      new webpack.DefinePlugin({
+        'process.env': {
+          'NODE_ENV': JSON.stringify('production')
+        }
+      }),
       new webpack.ProvidePlugin({
           $: "jquery",
           jQuery: "jquery",
@@ -38,6 +43,7 @@ module.exports = {
           React: "react"
       }),
       new webpack.optimize.CommonsChunkPlugin(['app', 'vendor'], 'public/js/[name].js'),
-      new webpack.optimize.UglifyJsPlugin({ mangle: false, compress: { warnings: false }}),
+      new webpack.optimize.UglifyJsPlugin({ mangle: false, compress: { warnings: false }})
+
     ]
 }

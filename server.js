@@ -15,7 +15,7 @@ var connectionPool = mysql.createPool({
   user     : 'guest',
   password : 'Passw0rd!',
   database : 'not_imdb',
-  debug    :  false
+  debug    : false
 });
 
 const app = express();
@@ -38,13 +38,12 @@ app.get('/api/query', function(req, res) {
       return;
     }
     console.log("Query: " + req.query.q);
-    connection.query(req.query.q, function(err, rows) {
+    connection.query(req.query.q, function(err, rows, fields) {
       connection.release();
       if (err) {
         res.json({"code": 500, "status": "Error processing query: '" + err + "'"})
       }
-
-      res.json(rows);
+      res.json({"rows": rows, "schema": fields});
       return;
     });
 
