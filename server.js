@@ -42,6 +42,7 @@ app.get('/api/query', function(req, res) {
       connection.release();
       if (err) {
         res.json({"code": 500, "status": "Error processing query: '" + err + "'"})
+        return;
       }
       res.json({"rows": rows, "schema": fields});
       return;
@@ -83,7 +84,7 @@ app.use(function(err, req, res, next) {
 /**
  * Start Server
  */
-const port = 80;
+const port = 15301;
 app.listen(port);
 
 console.log('Visit: localhost:' + port);

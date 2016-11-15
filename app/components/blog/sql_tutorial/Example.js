@@ -1,6 +1,6 @@
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import AvPlayArrow from 'material-ui/svg-icons/AV/play-arrow';
-import ContentClear from 'material-ui/svg-icons/Content/clear';
+import AvPlayArrow from 'material-ui/svg-icons/av/play-arrow';
+import ContentClear from 'material-ui/svg-icons/content/clear';
 
 import Table from './Table';
 
