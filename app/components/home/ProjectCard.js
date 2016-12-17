@@ -6,9 +6,7 @@ export default class ProjectCard extends React.Component {
       <div className="col s12 m6">
         <div className="card">
           <div className="card-image waves-effect waves-block waves-light">
-            <Link to={this.props.projectLink}>
-               <img src={this.props.projectImage} />
-            </Link>
+            {this.getLink(this.props.isLocal, this.props.projectLink, <img src={this.props.projectImage} />)}
           </div>
           <div className="card-content">
             <span className="card-title activator grey-text text-darken-4">
@@ -16,7 +14,7 @@ export default class ProjectCard extends React.Component {
             </span>
           </div>
           <div className="card-action">
-            <Link to={this.props.projectLink}>Go!</Link>
+            {this.getLink(this.props.isLocal, this.props.projectLink, "Go!")}
             <a href={this.props.codeLink}>Code</a>
           </div>
           <div className="card-reveal">
@@ -27,5 +25,13 @@ export default class ProjectCard extends React.Component {
       </div>
 
     );
+  }
+
+  getLink(local, location, body) {
+    if (local) {
+        return (<Link to={location}>{body}</Link>);
+    } else {
+        return (<a href={location}>{body}</a>);
+    }
   }
 }

@@ -65,7 +65,6 @@ gulp.task('serve-test:node', function(done) {
 /**
  * Main tasks
  */
-
 gulp.task('serve', ['serve:node']);
 gulp.task('serve-test', ['serve-test:build', 'serve-test:node']);
 gulp.task('watch', ['build', 'watch:build']);
