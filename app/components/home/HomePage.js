@@ -98,6 +98,15 @@ export default class HomePage extends React.Component {
                 codeLink="https://github.com/hschafer/hunters-website"
               />
             </div>
+            <div classname="row">
+              <ProjectCard
+                projectName="Networms Collaborative Editor"
+                projectImage="images/editor.png"
+                projectDescription="In our networks class, we were given the opportunity to implement anything we wanted that relates to networks in some way. My team and I developed a collaborative editor that allows multiple users to edit a document together."
+                projectLink="/editor"
+                codeLink="https://github.com/hschafer/collaborative-editor"
+              />
+            </div>
           </Section>
           <Section title="Blog">
             <ul className="row">
