@@ -98,7 +98,7 @@ export default class HomePage extends React.Component {
                 codeLink="https://github.com/hschafer/hunters-website"
               />
             </div>
-            <div classname="row">
+            <div className="row">
               <ProjectCard
                 projectName="Networms Collaborative Editor"
                 projectImage="images/editor.png"
