@@ -18,7 +18,8 @@ export default class PolitifactVizContainer extends React.Component {
             nameSelected: null,
             subjectSelected: null,
             partySelected: null,
-            data: null
+            data: null,
+            header: null
         };
     }
 
@@ -53,7 +54,7 @@ export default class PolitifactVizContainer extends React.Component {
             </div>
             {this.state.data &&
                 <h3>
-                    {this.getHeader()}
+                    {this.state.header}
                 </h3>
             }
             <Histogram
@@ -80,23 +81,21 @@ export default class PolitifactVizContainer extends React.Component {
       );
     }
 
-    getHeader() {
-      if (this.state.data) {
-        var prefix = "Statements made ";
-        if (this.state.nameSelected) {
-          prefix += "by " + this.state.nameSelected + " ";
-        } else if (this.state.partySelected) {
-          prefix += "by " + this.state.partySelected + " members ";
-        }
-
-        if (this.state.subjectSelected) {
-          prefix += "about " + this.state.subjectSelected + " ";
-        }
-        var totalRatings = this.state.data.reduce(function(acc, rating) {
-          return acc + rating.count;
-        }, 0);
-        return prefix + "(" + totalRatings + " reviewed)";
+    getHeader(data) {
+      var prefix = "Statements made ";
+      if (this.state.nameSelected) {
+        prefix += "by " + this.state.nameSelected + " ";
+      } else if (this.state.partySelected) {
+        prefix += "by " + this.state.partySelected + " members ";
       }
+
+      if (this.state.subjectSelected) {
+        prefix += "about " + this.state.subjectSelected + " ";
+      }
+      var totalRatings = data.reduce(function(acc, rating) {
+        return acc + rating.count;
+      }, 0);
+      return prefix + "(" + totalRatings + " reviewed)";
     }
 
     componentDidMount() {
@@ -125,7 +124,8 @@ export default class PolitifactVizContainer extends React.Component {
             party: this.state["partySelected"]
           }
         }).then(function(response) {
-          this.setState({data: response.data});
+          var header = this.getHeader(response.data);
+          this.setState({data: response.data, header: header});
         }.bind(this)).catch(function(error) {
           console.log('error', error);
         }.bind(this));
