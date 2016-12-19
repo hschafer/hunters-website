@@ -92,7 +92,7 @@ app.get('/api/politifact/query', function(req, res) {
     var query = 'SELECT ru.name AS ruling, COUNT(st.id) AS count '
       + 'FROM Statements AS st '
       + 'INNER JOIN ('
-          + 'SELECT id'
+          + 'SELECT id '
           + 'FROM Speakers '
           + 'WHERE name = "' + req.query.name + '" '
       + ') AS sp ON st.speaker = sp.id '

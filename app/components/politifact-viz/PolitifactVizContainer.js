@@ -27,8 +27,6 @@ export default class PolitifactVizContainer extends React.Component {
       console.log(searchText);
       if (index >= 0) {
         this.setState({selectedPerson: searchText});
-      } else {
-        this.setState({selectedPerson: null});
       }
     }
 
@@ -55,7 +53,10 @@ export default class PolitifactVizContainer extends React.Component {
                 onClick={this.getPolitifactData.bind(this)}
               />
             </div>
-            <Histogram data={this.state.data} />
+            <Histogram
+              data={this.state.data}
+              name={this.state.selectedPerson}
+            />
           </div>
         );
     }

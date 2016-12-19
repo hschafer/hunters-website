@@ -3,8 +3,24 @@ import * as d3 from "d3";
 export default class Histogram extends React.Component {
   render() {
     return (
-        <div className="chart-container"></div>
+        <div className="chart-container">
+          {this.props.data &&
+            <h2>
+              {this.props.name + " (" + this.totalRatings() + " reviews)"}
+            </h2>
+          }
+        </div>
     );
+  }
+
+  totalRatings() {
+    if (this.props.data) {
+      return this.props.data.reduce(function(acc, ruling) {
+        return acc + ruling.count;
+      }, 0);
+    } else {
+      return 0;
+    }
   }
 
   componentDidUpdate() {
