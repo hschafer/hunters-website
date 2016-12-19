@@ -77,7 +77,7 @@ export default class HomePage extends React.Component {
                 <h2>Hunter Schafer</h2>
                 <p className="promo-caption">University of Washington</p>
                 <p className="promo-caption">Combined Bachelors / Masters of Computer Science</p>
-                <p className="grey-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p className="grey-text">&lt;Insert description you want me to have here &gt;</p>
               </div>
             </div>
           </Section>
@@ -116,13 +116,6 @@ export default class HomePage extends React.Component {
                 codeLink="https://github.com/hschafer/hunters-website"
               />
             </div>
-          </Section>
-          <Section title="Blog">
-            <ul className="row">
-              <li>
-                <Link to="blog/sql_tutorial">SQL Tutorial</Link>
-              </li>
-            </ul>
           </Section>
         </div>
         <ImplementationDrawer components={IMPLEMENTED_WITH} />
