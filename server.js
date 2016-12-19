@@ -61,6 +61,25 @@ app.get('/api/query', function(req, res) {
   });
 });
 
+app.get('/api/politifact/names', function(req, res) {
+  politifactDBConnection.getConnection(function(err, connection) {
+    if (err) {
+      connection.release();
+      res.json({"code": 100, "status": "Could not connect to database"});
+      return;
+    }
+    console.log('Request: [GET]', req.originalUrl);
+    var query = 'SELECT name, photo_url FROM Speakers ORDER BY name';
+    connection.query(query, function(err, rows, fields) {
+      if (err) {
+        res.json({"code": 500, "status": "Error processing query: '" + err + "'"});
+      } else {
+        res.json(rows);
+      }
+    });
+  });
+});
+
 app.get('/api/politifact/query', function(req, res) {
   politifactDBConnection.getConnection(function(err, connection) {
     if (err) {
@@ -68,24 +87,14 @@ app.get('/api/politifact/query', function(req, res) {
       res.json({"code": 100, "status": "Could not connect to database"});
       return;
     }
-    console.log("Query: " + req.query);
+    console.log('Request: [GET]', req.originalUrl);
 
-    //var speakersTable = 'SELECT id, first_name, last_name FROM Speakers'
-    //  + 'WHERE first_name
-    //var query = 'SELECT ru.name as ruling, COUNT(st.id) as count FROM Statements AS st '
-    //  + 'INNER JOIN AS sp ON st.speaker = sp.id '
-    //  + 'RIGHT OUTER JOIN Rulings AS ru ON st.ruling = ru.id '
-    //  + 'WHERE sp.first_name = "' + req.query.first + '" '
-    //  + 'AND sp.last_name = "' + req.query.last + '" '
-    //  + 'GROUP BY ru.id, ru.name '
-    //  + 'ORDER BY ru.id;';
     var query = 'SELECT ru.name AS ruling, COUNT(st.id) AS count '
       + 'FROM Statements AS st '
       + 'INNER JOIN ('
-          + 'SELECT id, first_name, last_name '
+          + 'SELECT id'
           + 'FROM Speakers '
-          + 'WHERE first_name = "' + req.query.first + '" '
-          + 'AND last_name = "' + req.query.last + '" '
+          + 'WHERE name = "' + req.query.name + '" '
       + ') AS sp ON st.speaker = sp.id '
       + 'RIGHT OUTER JOIN Rulings AS ru ON st.ruling = ru.id '
       + 'GROUP BY ru.id, ru.name '
@@ -95,10 +104,8 @@ app.get('/api/politifact/query', function(req, res) {
       connection.release();
       if (err) {
         res.json({"code": 500, "status": "Error processing query: '" + err + "'"});
-        return;
       } else {
-        res.json({"result": rows});
-        return;
+        res.json(rows);
       }
     });
   });
