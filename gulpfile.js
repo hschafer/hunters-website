@@ -16,9 +16,9 @@ gulp.task('build:app', ['clean:build'], function() {
 });
 
 gulp.task('dev:watch', function() {
-  gulp.watch('./app/**/*', ['serve:build-app']);
-  gulp.watch('./public/css/*.css', ['serve:build-app']);
-  gulp.watch('./server.js', ['serve:build-server']);
+  gulp.watch('./app/**/*', ['build:app']);
+  gulp.watch('./public/css/*.css', ['build:app']);
+  gulp.watch('./server.js', ['build:server']);
 });
 
 gulp.task('build:server', function(done) {
@@ -37,8 +37,8 @@ gulp.task('serve:node', ['build:app', 'build:server'], function(done) {
 });
 
 gulp.task('dev:watch', ['build:app'], function(done) {
-  gulp.watch('./app/**/*.js', ['serve:build-app']);
-  gulp.watch('./server.js', ['serve:build-server']);
+  gulp.watch('./app/**/*.js', ['build:app']);
+  gulp.watch('./server.js', ['build:server']);
 });
 
 
