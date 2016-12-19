@@ -107,6 +107,14 @@ export default class HomePage extends React.Component {
                 projectLink="/editor"
                 codeLink="https://github.com/hschafer/collaborative-editor"
               />
+
+              <ProjectCard
+                projectName="PolitifactViz"
+                projectImeage="images/politifactviz.png"
+                projectDescription="TODO"
+                projectLink="/politifact_viz"
+                codeLink="https://github.com/hschafer/hunters-website"
+              />
             </div>
           </Section>
           <Section title="Blog">
