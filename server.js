@@ -35,6 +35,24 @@ app.use(express.static(path.join(__dirname, '..', 'public'), {
   dotfiles: 'ignore'
 }));
 
+function simpleQuery(db, query, res) {
+  db.getConnection(function(err, connection) {
+    if (err) {
+      connection.release();
+      res.json({"code": 100, "status": "Could not connect to database"});
+      return;
+    }
+    console.log('Request: [GET]', query);
+    connection.query(query, function(err, rows, fields) {
+      if (err) {
+        res.json({"code": 500, "status": "Error processing query: '" + err + "'"});
+      } else {
+        res.json(rows);
+      }
+    });
+  }); 
+}
+
 app.get('/api/query', function(req, res) {
   notIMDBConnection.getConnection(function(err, connection) {
     if (err) {
@@ -62,53 +80,56 @@ app.get('/api/query', function(req, res) {
 });
 
 app.get('/api/politifact/names', function(req, res) {
-  politifactDBConnection.getConnection(function(err, connection) {
-    if (err) {
-      connection.release();
-      res.json({"code": 100, "status": "Could not connect to database"});
-      return;
-    }
-    console.log('Request: [GET]', req.originalUrl);
-    var query = 'SELECT name, photo_url FROM Speakers ORDER BY name';
-    connection.query(query, function(err, rows, fields) {
-      if (err) {
-        res.json({"code": 500, "status": "Error processing query: '" + err + "'"});
-      } else {
-        res.json(rows);
-      }
-    });
-  });
+  var query = 'SELECT name, photo_url FROM Speakers ORDER BY name;';
+  simpleQuery(politifactDBConnection, query, res);
 });
 
-app.get('/api/politifact/query', function(req, res) {
-  politifactDBConnection.getConnection(function(err, connection) {
-    if (err) {
-      connection.release();
-      res.json({"code": 100, "status": "Could not connect to database"});
-      return;
-    }
-    console.log('Request: [GET]', req.originalUrl);
+app.get('/api/politifact/subjects', function(req, res) {
+  var query = 'SELECT name FROM Subjects ORDER BY name;';
+  simpleQuery(politifactDBConnection, query, res);
+});
 
-    var query = 'SELECT ru.name AS ruling, COUNT(st.id) AS count '
-      + 'FROM Statements AS st '
-      + 'INNER JOIN ('
-          + 'SELECT id '
-          + 'FROM Speakers '
-          + 'WHERE name = "' + req.query.name + '" '
-      + ') AS sp ON st.speaker = sp.id '
-      + 'RIGHT OUTER JOIN Rulings AS ru ON st.ruling = ru.id '
-      + 'GROUP BY ru.id, ru.name '
-      + 'ORDER BY ru.id;'
-    console.log(query);
-    connection.query(query, function(err, rows, fields) {
-      connection.release();
-      if (err) {
-        res.json({"code": 500, "status": "Error processing query: '" + err + "'"});
-      } else {
-        res.json(rows);
-      }
-    });
-  });
+app.get('/api/politifact/parties', function(req, res) {
+  var query = 'SELECT name FROM Parties ORDER BY name;';
+  simpleQuery(politifactDBConnection, query, res);
+});
+
+
+function filter(table, value, select) {
+  return 'SELECT ' + select + ' '
+      + 'FROM ' + table + ' '
+      + 'WHERE name = "' + value + '"';
+}
+
+app.get('/api/politifact/query', function(req, res) {
+  console.log("Received: ", req.originalUrl);
+  var query = 'SELECT ru.name AS ruling, COUNT(st.id) AS count '
+    + 'FROM Statements AS st ';
+
+  var speakerTable = 'Speakers'
+  if (req.query.name) {
+    speakerTable = '(' + filter('Speakers', req.query.name, 'id, party') + ')';
+  }
+
+  query += ('INNER JOIN ' + speakerTable + ' AS sp ON st.speaker = sp.id ');
+
+  if (req.query.subject) {
+    query += 'INNER JOIN StatementSubject AS ss ON st.id = ss.statement_id ';
+    query += ('INNER JOIN (' 
+        + filter('Subjects', req.query.subject, 'id')
+        + ') AS su ON ss.subject_id = su.id ');
+  }
+
+  if (req.query.party) {
+    query += ('INNER JOIN ('
+        + filter('Parties', req.query.party, 'id')
+        + ') AS pa ON sp.party = pa.id ');
+
+  }
+  query += ('RIGHT OUTER JOIN Rulings AS ru ON st.ruling = ru.id '
+    + 'GROUP BY ru.id, ru.name '
+    + 'ORDER BY ru.id;');
+  simpleQuery(politifactDBConnection, query, res);
 });
 
 
