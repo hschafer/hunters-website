@@ -6,7 +6,7 @@ import NotFound from './components/other_views/NotFound';
 import RequestPermission from './components/other_views/RequestPermission';
 import Article from './components/blog/sql_tutorial/Article';
 
-import PolitifactVizContainer from './components/politifact-viz/PolitifactVizContainer';
+import PolitifactVizAppContainer from './components/politifact-viz/AppContainer';
 
 export default class AppRouter extends React.Component {
   render() {
@@ -14,7 +14,7 @@ export default class AppRouter extends React.Component {
       <Router history={browserHistory}>
         <Route path="/" component={HomePage} />
         <Route path="campusmaps" component={CampusMapsContainer} />
-        <Route path="politifact_viz" component={PolitifactVizContainer} />
+        <Route path="politifact_viz" component={PolitifactVizAppContainer} />
 
         <Route path="blog">
           <Route path="sql_tutorial" component={Article} />

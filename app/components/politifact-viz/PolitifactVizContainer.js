@@ -39,7 +39,6 @@ export default class PolitifactVizContainer extends React.Component {
     render() {
         return (
           <div>
-            <Header title="PolitifactViz"/>
             <div className="input">
               {this.getInputField("name")} or {this.getInputField("party")}
               <br />
