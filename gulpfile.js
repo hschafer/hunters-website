@@ -46,9 +46,6 @@ gulp.task('serve:node', function(done) {
 gulp.task('serve-test:build', function(done) {
   return gulp.src('./server.js')
     .pipe(babel())
-    .on('error', function handleError() {
-      this.emit('end'); 
-    })
     .pipe(gulp.dest('./lib'));
   
 });
@@ -56,17 +53,17 @@ gulp.task('serve-test:build', function(done) {
 gulp.task('serve-test:node', function(done) {
   nodemon({
     exec: 'node ./lib/server.js',
-    watch: ['lib/server.js'],
+    watch: ['./lib/server.js'],
     ext: 'js html'
   });
 });
 
+gulp.task('dev:watch', ['serve:build-app'], function(done) {
+  gulp.watch('./app/**/*.js', ['serve:build-app']);
+  gulp.watch('./server.js', ['serve:build-server']);
+});
 
-/**
- * Main tasks
- */
 
-gulp.task('serve', ['serve:node']);
-gulp.task('serve-test', ['serve-test:build', 'serve-test:node']);
-gulp.task('watch', ['build', 'watch:build']);
+gulp.task('serve', ['serve:build-server', 'serve:build-app', 'serve:node']);
+gulp.task('dev', ['serve', 'dev:watch']);
 gulp.task('default', ['serve']);
