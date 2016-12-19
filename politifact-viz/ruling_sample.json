@@ -1,0 +1,5 @@
+{"id": 1,
+  "resource_uri": "/api/v/2/statementruling/1/",
+  "ruling": "True",
+  "ruling_graphic": "http://static.politifact.com.s3.amazonaws.com/politifact/rulings/rulings-tom-true.gif",
+  "ruling_slug": "true"}

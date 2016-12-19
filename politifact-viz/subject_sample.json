@@ -1,0 +1,7 @@
+{"description": "",
+  "id": 23,
+  "photo": "http://static.politifact.com.s3.amazonaws.com/subjects/mugs/stop-sign.jpg",
+  "resource_uri": "/api/v/2/subject/23/",
+  "subject": "Immigration",
+  "subject_slug": "immigration",
+  "used_in_edition": ["/api/v/2/edition/1/"]}
