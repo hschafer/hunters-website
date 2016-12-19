@@ -110,7 +110,7 @@ export default class HomePage extends React.Component {
 
               <ProjectCard
                 projectName="PolitifactViz"
-                projectImeage="images/politifactviz.png"
+                projectImage="images/politifactviz.png"
                 projectDescription="TODO"
                 projectLink="/politifact_viz"
                 codeLink="https://github.com/hschafer/hunters-website"
