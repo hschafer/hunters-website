@@ -88,6 +88,7 @@ export default class HomePage extends React.Component {
                 projectImage="/images/campusmaps_small.jpg"
                 projectDescription="In our Software Design & Implementation class, we developed a Java GUI application that could find paths between buildings on campus in order to learn about GUI creation and practice the MVC pattern. I took the project an extra step by making it a web app."
                 projectLink="campusmaps"
+                isLocal="true"
                 codeLink="request_permission"
               />
               <ProjectCard
@@ -96,6 +97,15 @@ export default class HomePage extends React.Component {
                 projectDescription="Hold onto your hat, it's about to get meta! I wanted to put a link here since I've spent some time on this and I wanted to share the code. If you find a bug, please file an issue on GitHub!"
                 projectLink="/"
                 codeLink="https://github.com/hschafer/hunters-website"
+              />
+            </div>
+            <div className="row">
+              <ProjectCard
+                projectName="Networms Collaborative Editor"
+                projectImage="images/editor.png"
+                projectDescription="In our networks class, we were given the opportunity to implement anything we wanted that relates to networks in some way. My team and I developed a collaborative editor that allows multiple users to edit a document together."
+                projectLink="/editor"
+                codeLink="https://github.com/hschafer/collaborative-editor"
               />
             </div>
           </Section>
