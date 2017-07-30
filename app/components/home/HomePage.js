@@ -60,19 +60,19 @@ const IMPLEMENTED_WITH = [
 var PROJECTS = [
     [
         {
+            name: "Police Killings in US",
+            image: "/images/police-killings.jpg",
+            description: "This was a project we worked on in our Data Visualization class. Our team spent a month and a half prototyping and building a story around data available about altercations with police which result in the police officer using lethal force.",
+            link: "https://hschafer.github.io/Police-Killings-In-US/final/",
+            codeLink: "https://github.com/hschafer/Police-Killings-In-US"
+        },
+        {
             name: "Campus Paths - Web",
             image: "/images/campusmaps_small.jpg",
             description: "In our Software Design & Implementation class, we developed a Java GUI application that could find paths between buildings on campus in order to learn about GUI creation and practice the MVC pattern. I took the project an extra step by making it a web app.",
             link: "campusmaps",
             codeLink: "request_permission"
         },
-        {
-            name: "Personal Website",
-            image: "images/website.png",
-            description: "Hold onto your hat, it's about to get meta! I wanted to put a link here since I've spent some time on this and I wanted to share the code. If you find a bug, please file an issue on GitHub!",
-            link: "/",
-            codeLink: "https://github.com/hschafer/hunters-website"
-        }
     ],
     [
         {
@@ -87,6 +87,15 @@ var PROJECTS = [
             image: "images/politifactviz.png",
             description: "TODO",
             link: "/politifact_viz",
+            codeLink: "https://github.com/hschafer/hunters-website"
+        }
+    ],
+    [
+        {
+            name: "Personal Website",
+            image: "images/website.png",
+            description: "Hold onto your hat, it's about to get meta! I wanted to put a link here since I've spent some time on this and I wanted to share the code. If you find a bug, please file an issue on GitHub!",
+            link: "/",
             codeLink: "https://github.com/hschafer/hunters-website"
         }
     ]
