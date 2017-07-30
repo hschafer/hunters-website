@@ -57,6 +57,51 @@ const IMPLEMENTED_WITH = [
   }
 ];
 
+var PROJECTS = [
+    [
+        {
+            name: "Campus Paths - Web",
+            image: "/images/campusmaps_small.jpg",
+            description: "In our Software Design & Implementation class, we developed a Java GUI application that could find paths between buildings on campus in order to learn about GUI creation and practice the MVC pattern. I took the project an extra step by making it a web app.",
+            link: "campusmaps",
+            codeLink: "request_permission"
+        },
+        {
+            name: "Personal Website",
+            image: "images/website.png",
+            description: "Hold onto your hat, it's about to get meta! I wanted to put a link here since I've spent some time on this and I wanted to share the code. If you find a bug, please file an issue on GitHub!",
+            link: "/",
+            codeLink: "https://github.com/hschafer/hunters-website"
+        }
+    ],
+    [
+        {
+            name: "Networms Collaborative Editor",
+            image: "images/editor.png",
+            description: "In our networks class, we were given the opportunity to implement anything we wanted that relates to networks in some way. My team and I developed a collaborative editor that allows multiple users to edit a document together.",
+            link: "/editor",
+            codeLink: "https://github.com/hschafer/collaborative-editor"
+        },
+        {
+            name: "PolitifactViz",
+            image: "images/politifactviz.png",
+            description: "TODO",
+            link: "/politifact_viz",
+            codeLink: "https://github.com/hschafer/hunters-website"
+        }
+    ]
+];
+
+function makeProjectCard(data) {
+    return <ProjectCard
+        projectName={data.name}
+        projectImage={data.image}
+        projectDescription={data.description}
+        projectLink={data.link}
+        codeLink={data.codeLink}
+     />;
+}
+
 export default class HomePage extends React.Component {
   render() {
     return (
@@ -82,40 +127,12 @@ export default class HomePage extends React.Component {
             </div>
           </Section>
           <Section title="Projects">
-            <div className="row">
-              <ProjectCard
-                projectName="Campus Paths - Web"
-                projectImage="/images/campusmaps_small.jpg"
-                projectDescription="In our Software Design & Implementation class, we developed a Java GUI application that could find paths between buildings on campus in order to learn about GUI creation and practice the MVC pattern. I took the project an extra step by making it a web app."
-                projectLink="campusmaps"
-                isLocal="true"
-                codeLink="request_permission"
-              />
-              <ProjectCard
-                projectName="Personal Website"
-                projectImage="images/website.png"
-                projectDescription="Hold onto your hat, it's about to get meta! I wanted to put a link here since I've spent some time on this and I wanted to share the code. If you find a bug, please file an issue on GitHub!"
-                projectLink="/"
-                codeLink="https://github.com/hschafer/hunters-website"
-              />
-            </div>
-            <div className="row">
-              <ProjectCard
-                projectName="Networms Collaborative Editor"
-                projectImage="images/editor.png"
-                projectDescription="In our networks class, we were given the opportunity to implement anything we wanted that relates to networks in some way. My team and I developed a collaborative editor that allows multiple users to edit a document together."
-                projectLink="/editor"
-                codeLink="https://github.com/hschafer/collaborative-editor"
-              />
-
-              <ProjectCard
-                projectName="PolitifactViz"
-                projectImage="images/politifactviz.png"
-                projectDescription="TODO"
-                projectLink="/politifact_viz"
-                codeLink="https://github.com/hschafer/hunters-website"
-              />
-            </div>
+            {PROJECTS.map(function(projectRow) {
+                return <div className="row">
+                    {makeProjectCard(projectRow[0])}
+                    {projectRow.length > 1 ? makeProjectCard(projectRow[1]) : null}
+                </div>;
+            })}
           </Section>
         </div>
         <ImplementationDrawer components={IMPLEMENTED_WITH} />
